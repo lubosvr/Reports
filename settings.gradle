@@ -1,0 +1,2 @@
+rootProject.name = 'idc'
+include('application', 'data-library')

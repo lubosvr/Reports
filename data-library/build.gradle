@@ -1,0 +1,22 @@
+plugins {
+	id 'java'
+}
+
+group = 'cz.idc'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'com.opencsv:opencsv:5.5'
+
+	testImplementation(platform('org.junit:junit-bom:5.7.2'))
+	testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+test {
+	useJUnitPlatform()
+}

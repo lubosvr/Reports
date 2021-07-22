@@ -1,0 +1,22 @@
+plugins {
+	id 'java'
+}
+
+group = 'cz.idc'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation project(':data-library')
+}
+
+test {
+	useJUnitPlatform()
+}
