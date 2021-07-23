@@ -1,6 +1,5 @@
 package cz.idc;
 
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.List;
 import java.util.Optional;

@@ -25,7 +25,7 @@ public class Report {
         this.country = country;
         this.timescale = timescale;
         this.lines = new ArrayList<>(reportLines);
-        Collections.sort(lines, comparator);
+        lines.sort(comparator);
     }
 
     public String getCountry() {
@@ -80,5 +80,16 @@ public class Report {
             lines.add(reportLine);
             totalShares = totalShares.add(reportLine.getShare());
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Report{" +
+                "country='" + country + '\'' +
+                ", timescale='" + timescale + '\'' +
+                ", lines=" + lines +
+                ", totalUnits=" + totalUnits +
+                ", totalShares=" + totalShares +
+                '}';
     }
 }

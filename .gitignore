@@ -5,3 +5,5 @@
 /data-library/build/
 /data-library/build/classes/java/main/
 /data-library/build/classes/java/test/
+/.idea/
+/gradle/wrapper/

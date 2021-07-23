@@ -1,37 +1,24 @@
 package cz.idc;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
 public class Application {
 
-    private static void writeToFile(String content) {
-        String filename = ClassLoader.getSystemResource("data.html").getFile();
-        File file = new File(filename);
-        try (FileWriter writer = new FileWriter(file)) {
-            writer.write("<html>");
-            writer.write(content);
-            writer.write("</html>");
-            writer.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public static void main(String[] s) {
-        HtmlExporter exporter = new HtmlExporter();
+        Exporter exporter = new HtmlExporter();
         ReportCreator reportCreator = new ReportCreator();
         Reader<Computer> reader = new Reader<>(Computer.class);
 
         Optional<List<Computer>> read = reader.read(ClassLoader.getSystemResource("data.csv").getFile());
         if (read.isPresent()) {
             Report report = reportCreator.createReport("Slovakia", "2010 Q4", read.get());
-            String html = exporter.convertToString(report);
-            writeToFile(html);
-            System.out.println(html);
+            Optional<ReportLine> acer = report.findVendor("Acer");
+            System.out.println("Acer in Slovakia in 2010 Q4: " + (acer.isPresent() ? acer.get() : "no data"));
+            System.out.println("Row with data for Acer in Slovakia in 2010 Q4: " + report.getRowOfVendor("Acer"));
+            System.out.println("Report sorted by vendor: " + report.sortByVendor());
+            System.out.println("Report sorted by unit values: " + report.sortByUnits());
+            System.out.println("Report in HTML: " + exporter.convertToString(report));
         }
     }
 }
